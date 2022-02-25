@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, Text, View, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, ScrollView, ToastAndroid } from 'react-native'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 import { Icon, Button } from 'react-native-elements'
 import GrifoInput from './src/components/GrifoInput'
@@ -12,13 +12,11 @@ export default function App() {
 
   const [grifo, setGrifo] = useState([])
   const [costo, setCosto] = useState([])
-
+  
   const onPressCalculate = () => {
-    /*
-      "4, 2, 3", debemos borrar los espacios en blanco del string, luego convertirlo a un array
-      luego comprobar si cada elemento es entero y no negativo
-    */
     
+    
+
   }
 
   return (
@@ -30,13 +28,17 @@ export default function App() {
 
           <GrifoInput grifo={grifo} setGrifo={setGrifo}/>
 
-          <CustomDivider marginTop={20} marginBottom={20}/>
+          <CustomDivider marginTop={5} marginBottom={25}/>
 
           <CostoInput costo={costo} setCosto={setCosto}/>
 
         </ScrollView>
 
-        <Button buttonStyle={styles.button} title={"Calcular"} icon={<Icon type='material-community' name='check' color={"white"} size={20}/>}/>
+        <Button  
+          onPress={onPressCalculate}
+          buttonStyle={styles.button} 
+          title={"Calcular"} 
+          icon={<Icon type='material-community' name='check' color={"white"} size={20}/>}/>
       </SafeAreaView>
     </SafeAreaProvider>
   )
