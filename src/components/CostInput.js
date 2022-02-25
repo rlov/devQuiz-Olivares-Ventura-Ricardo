@@ -2,7 +2,8 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Icon, Input } from 'react-native-elements'
 
-export default function CostoInput({ costo, setCosto, formError, setFormError }) {
+export default function CostInput({ costo, setCosto, formError, setFormError,
+  setResult }) {
 
   const onChangeText = (t) => {
 
@@ -18,6 +19,7 @@ export default function CostoInput({ costo, setCosto, formError, setFormError })
     }
     /* setFormError({...formError, costo: false}) */
     setFormError({})
+    setResult(null)
   }
 
   return (

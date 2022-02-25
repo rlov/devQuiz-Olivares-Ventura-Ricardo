@@ -2,8 +2,8 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Icon, Input } from 'react-native-elements'
 
-export default function GrifoInput({ grifo, setGrifo, formError, setFormError }) {
-
+export default function GasStationInput({ grifo, setGrifo, formError, setFormError,
+  setResult }) {
 
     const onChangeText = (t) => {
         if(t == ""){
@@ -18,6 +18,7 @@ export default function GrifoInput({ grifo, setGrifo, formError, setFormError })
         }
         /* setFormError({...formError, grifo: false}) */
         setFormError({})
+        setResult(null)
     }
 
   return (
