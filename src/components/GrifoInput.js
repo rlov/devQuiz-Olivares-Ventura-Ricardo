@@ -2,12 +2,22 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Icon, Input } from 'react-native-elements'
 
-export default function GrifoInput({ grifo, setGrifo }) {
+export default function GrifoInput({ grifo, setGrifo, formError, setFormError }) {
+
 
     const onChangeText = (t) => {
-        const auxGrifo = t.replace(/\s+/g, '');
-        const arrayGrifo = auxGrifo.split(',')
-        setGrifo(arrayGrifo)
+        if(t == ""){
+            setGrifo([])
+        }
+        else{
+            const auxGrifo = t.replace(/\s+/g, '');
+            const arrayGrifo = auxGrifo.split(',').map((item, index) => {
+                return parseFloat(item)
+            })
+            setGrifo(arrayGrifo)
+        }
+        /* setFormError({...formError, grifo: false}) */
+        setFormError({})
     }
 
   return (
@@ -21,8 +31,18 @@ export default function GrifoInput({ grifo, setGrifo }) {
             autoCapitalize='none'
             placeholder='Por ejemplo: 1,2,3,4,5' inputStyle={styles.input}
             inputContainerStyle={{borderBottomWidth: 0}}
+            containerStyle={{
+                height: 80
+            }}
             onChangeText={onChangeText}
       />
+      {
+        (formError?.grifo) && (
+          <Text style={styles.textError}>
+            {formError?.grifoMessage}
+          </Text>
+        )
+      }
     </View>
   )
 }
@@ -47,5 +67,11 @@ const styles = StyleSheet.create({
         marginTop: 18,
         paddingHorizontal: 10,
         borderRadius: 5
+    },
+    textError:{
+        color: 'red',
+        paddingHorizontal: 10,
+        fontWeight: 'bold',
+        fontSize: 14
     }
 })
