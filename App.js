@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, View, ScrollView, ToastAndroid } from 'react-native'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 import { Icon, Button } from 'react-native-elements'
+import RNBootSplash from 'react-native-bootsplash'
+
+//Components
 import GasStationInput from './src/components/GasStationInput'
 import CostInput from './src/components/CostInput'
 import CustomDivider from './src/components/CustomDivider'
 import ResultContainer from './src/components/ResultContainer'
-import RNBootSplash from 'react-native-bootsplash'
-//react-native-elements
-const MAIN_COLOR = "#00a680"
 
 export default function App() {
 
@@ -16,6 +16,8 @@ export default function App() {
   const [costo, setCosto] = useState([])
   const [formError, setFormError] = useState({})
   const [result, setResult] = useState(null)
+
+  console.log("costo: ",costo)
 
   useEffect(() => {
     (async() => {
@@ -73,6 +75,7 @@ export default function App() {
       if(band){ //Si band = true, entonces seguimos realizando las comparaciones, caso contrario no tiene sentido seguir comparando
         //VUELTA
         for(let j = 0; j < currentIndex; j++){
+
           if(currentGas >= costo[j]){
             currentGas -= costo[j];
             currentGas += grifo[j + 1];
@@ -146,8 +149,8 @@ export default function App() {
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
 
-        <ScrollView contentContainerStyle={styles.scrollView}>
-          <Text style={styles.title}>Bienvenido</Text>
+        <ScrollView contentContainerStyle={styles.scrollView} showsVerticalScrollIndicator={false}>
+          <Text style={styles.title}>Dev Quiz</Text>
 
           <GasStationInput grifo={grifo} setGrifo={setGrifo} formError={formError}
           setFormError={setFormError} setResult={setResult}/>
@@ -178,6 +181,9 @@ export default function App() {
           buttonStyle={styles.button} 
           title={"Calcular"} 
           icon={<Icon type='material-community' name='check' color={"white"} size={20}/>}/>
+        <Text style={{fontSize: 14, fontWeight: 'bold', color: 'black', textAlign: 'center', marginBottom: 3}}>
+          OLIVARES VENTURA, Ricardo
+        </Text>
       </SafeAreaView>
     </SafeAreaProvider>
   )
@@ -189,11 +195,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'white'
   },
   scrollView:{
-    paddingVertical: 20
+    paddingVertical: 10,
+    paddingBottom: 40
   },
   title:{
-    fontSize: 32,
-    padding: 15,
+    fontSize: 28,
+    padding: 10,
     paddingTop: 10,
     fontWeight: 'bold',
     textAlign: 'center'

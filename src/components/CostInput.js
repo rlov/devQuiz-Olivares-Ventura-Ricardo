@@ -2,8 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Icon, Input } from 'react-native-elements'
 
-export default function CostInput({ costo, setCosto, formError, setFormError,
-  setResult }) {
+export default function CostInput({ setCosto, formError, setFormError, setResult }) {
 
   const onChangeText = (t) => {
 
@@ -26,7 +25,7 @@ export default function CostInput({ costo, setCosto, formError, setFormError,
       <View style={styles.container}>
         <View style={styles.header}>
           <Icon type='material-community' name='cash' color={"black"} size={24}/>
-          <Text style={styles.subtitle}>Introduzca el costo de cada grifo (Sepárelos por comas )</Text>
+          <Text style={styles.subtitle}>Introduzca el costo de cada grifo (Sepárelos por comas)</Text>
         </View>
         <Input 
         keyboardType='numeric' 

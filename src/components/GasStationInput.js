@@ -2,8 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Icon, Input } from 'react-native-elements'
 
-export default function GasStationInput({ grifo, setGrifo, formError, setFormError,
-  setResult }) {
+export default function GasStationInput({ setGrifo, formError, setFormError, setResult }) {
 
     const onChangeText = (t) => {
         if(t == ""){
